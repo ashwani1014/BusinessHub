@@ -1,3 +1,4 @@
+import { fetchApi } from '../utils/api';
 import { useState, useEffect } from 'react';
 
 const AdBanner = ({ page = 'Home' }) => {
@@ -5,7 +6,7 @@ const AdBanner = ({ page = 'Home' }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/api/ads?page=${page}`)
+        fetchApi(`/api/ads?page=${page}`)
             .then(res => res.json())
             .then(data => {
                 setAds(Array.isArray(data) ? data : []);

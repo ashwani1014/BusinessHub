@@ -20,7 +20,7 @@ const BusinessDetails = () => {
             return;
         }
         setLoading(true);
-        fetch(`/api/businesses/${id}`)
+        fetchApi(`/api/businesses/${id}`)
             .then(res => {
                 if (!res.ok) throw new Error('Business not found');
                 return res.json();

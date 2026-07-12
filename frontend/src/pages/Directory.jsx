@@ -21,7 +21,7 @@ const Directory = () => {
 
     // Fetch categories
     useEffect(() => {
-        fetch('/api/categories')
+        fetchApi('/api/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(console.error);
@@ -37,7 +37,7 @@ const Directory = () => {
         const url = `/api/businesses${params.toString() ? '?' + params.toString() : ''}`;
 
         setLoading(true);
-        fetch(url)
+        fetchApi(url)
             .then(res => res.json())
             .then(data => {
                 setBusinesses(data);

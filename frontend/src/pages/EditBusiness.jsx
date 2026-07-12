@@ -22,13 +22,13 @@ const EditBusiness = () => {
 
     useEffect(() => {
         // Fetch Categories
-        fetch('/api/categories')
+        fetchApi('/api/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(console.error);
 
         // Fetch existing business data by ID
-        fetch(`/api/businesses/${id}`)
+        fetchApi(`/api/businesses/${id}`)
             .then(res => res.json())
             .then(business => {
                 if (business) {

@@ -1,3 +1,4 @@
+import { fetchApi } from '../utils/api';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdBanner from '../components/AdBanner';
@@ -7,7 +8,7 @@ const Categories = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/categories')
+        fetchApi('/api/categories')
             .then(res => res.json())
             .then(data => {
                 setCategories(data);

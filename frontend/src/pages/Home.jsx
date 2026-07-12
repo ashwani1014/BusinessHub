@@ -1,3 +1,4 @@
+import { fetchApi } from '../utils/api';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -18,7 +19,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('/api/businesses?featured=true')
+        fetchApi('/api/businesses?featured=true')
             .then(res => res.json())
             .then(data => {
                 setFeaturedBusinesses(data);
@@ -42,7 +43,7 @@ const Home = () => {
             if (searchQuery.trim()) params.append('name', searchQuery.trim());
             if (locationQuery.trim()) params.append('location', locationQuery.trim());
 
-            const res = await fetch(`/api/businesses?${params.toString()}`);
+            const res = await fetchApi(`/api/businesses?${params.toString()}`);
             const data = await res.json();
             setSearchResults(data);
         } catch (err) {

@@ -24,7 +24,7 @@ const AddBusiness = () => {
     const [status, setStatus] = useState({ type: '', message: '' });
 
     useEffect(() => {
-        fetch('/api/categories')
+        fetchApi('/api/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(console.error);
