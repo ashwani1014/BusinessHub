@@ -7,8 +7,22 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'https://business-hub-jade.vercel.app',
+        process.env.FRONTEND_URL
+    ].filter(Boolean),
+    credentials: true
+}));
 app.use(express.json());
+
+// Request logging middleware
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`, req.body);
+    next();
+});
 
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
@@ -18,6 +32,7 @@ const { authMiddleware, adminMiddleware } = require('./middleware/auth');
 const User = require('./models/User');
 const Category = require('./models/Category');
 const Business = require('./models/Business');
+const Ad = require('./models/Ad');
 const { categories, businesses } = require('./data');
 
 let mongoServer;
@@ -45,12 +60,12 @@ const connectDB = async () => {
             "Shopping": "Cyber Safety & Crisis Help",
             "Nightlife": "Mindfulness & Inner Growth"
         };
-        
+
         console.log("Running category migrations on businesses...");
         for (const [oldName, newName] of Object.entries(categoryMap)) {
             // Update businesses using the old category name
             const updateRes = await Business.updateMany(
-                { category: new RegExp(`^${oldName}$`, 'i') }, 
+                { category: new RegExp(`^${oldName}$`, 'i') },
                 { $set: { category: newName } }
             );
             if (updateRes.modifiedCount > 0) {
@@ -91,39 +106,39 @@ const connectDB = async () => {
             console.log('Default businesses seeded.');
         }
 
-            // Seed default Ads
-            await Ad.insertMany([
-                {
-                    page: 'Home',
-                    title: 'Home Page Ad — Boost Your Visibility',
-                    description: 'Get your business featured on the Home Page and reach thousands of local customers.',
-                    media: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=60',
-                    redirectLink: '/add-business'
-                },
-                {
-                    page: 'Categories',
-                    title: 'Categories Page Ad — Target the Right Users',
-                    description: 'Reach customers who are actively browsing categories looking for your services.',
-                    media: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&auto=format&fit=crop&q=60',
-                    redirectLink: '/add-business'
-                },
-                {
-                    page: 'Directory',
-                    title: 'Directory Page Ad — Free Business Listing',
-                    description: 'Join 50,000+ businesses already listed. Setup takes under 5 minutes.',
-                    media: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60',
-                    redirectLink: '/add-business'
-                },
-                {
-                    page: 'BusinessDetails',
-                    title: 'Business Details Ad — Reach Local Customers',
-                    description: 'Advertise right next to business profiles and capture high-intent users.',
-                    media: 'https://images.unsplash.com/photo-1620714223084-8fcacc2dfd4d?w=800&auto=format&fit=crop&q=60',
-                    redirectLink: '/add-business'
-                }
-            ]);
+        // Seed default Ads
+        await Ad.insertMany([
+            {
+                page: 'Home',
+                title: 'Home Page Ad — Boost Your Visibility',
+                description: 'Get your business featured on the Home Page and reach thousands of local customers.',
+                media: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=60',
+                redirectLink: '/add-business'
+            },
+            {
+                page: 'Categories',
+                title: 'Categories Page Ad — Target the Right Users',
+                description: 'Reach customers who are actively browsing categories looking for your services.',
+                media: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&auto=format&fit=crop&q=60',
+                redirectLink: '/add-business'
+            },
+            {
+                page: 'Directory',
+                title: 'Directory Page Ad — Free Business Listing',
+                description: 'Join 50,000+ businesses already listed. Setup takes under 5 minutes.',
+                media: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60',
+                redirectLink: '/add-business'
+            },
+            {
+                page: 'BusinessDetails',
+                title: 'Business Details Ad — Reach Local Customers',
+                description: 'Advertise right next to business profiles and capture high-intent users.',
+                media: 'https://images.unsplash.com/photo-1620714223084-8fcacc2dfd4d?w=800&auto=format&fit=crop&q=60',
+                redirectLink: '/add-business'
+            }
+        ]);
 
-            console.log('In-memory database successfully seeded!');
+        console.log('In-memory database successfully seeded!');
     } catch (err) {
         console.error('MongoDB connection error:', err);
     }
@@ -156,6 +171,7 @@ app.post('/api/auth/register', async (req, res) => {
             res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
         });
     } catch (err) {
+        console.error('Register error:', err);
         res.status(500).send('Server error');
     }
 });
@@ -180,6 +196,7 @@ app.post('/api/auth/login', async (req, res) => {
             res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
         });
     } catch (err) {
+        console.error('Login error:', err);
         res.status(500).send('Server error');
     }
 });
