@@ -16,7 +16,7 @@ const Header = () => {
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-slate-900">
                         <span className="material-symbols-outlined text-2xl font-bold">search_insights</span>
                     </div>
-                    <h2 className="text-xl font-black tracking-tight text-slate-900 dark:text-slate-100">YellowPages</h2>
+                    <h2 className="text-xl font-black tracking-tight text-slate-900 dark:text-slate-100">BusinessHub</h2>
                 </Link>
                 <nav className="hidden md:flex items-center gap-8">
                     <Link className="text-sm font-semibold hover:text-primary transition-colors" to="/">Home</Link>

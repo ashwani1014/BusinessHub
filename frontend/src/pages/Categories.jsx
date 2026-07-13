@@ -77,7 +77,7 @@ const Categories = () => {
                         <span className="material-symbols-outlined text-sm">rocket_launch</span>
                         FOR AMBITIOUS BUSINESS OWNERS
                     </div>
-                    <h3 className="text-4xl md:text-6xl font-black text-white mb-8 leading-[1.1]">Grow your business with <span className="text-primary italic">YellowPages</span></h3>
+                    <h3 className="text-4xl md:text-6xl font-black text-white mb-8 leading-[1.1]">Grow your business with <span className="text-primary italic">BusinessHub</span></h3>
                     <p className="text-slate-400 text-lg mb-10 leading-relaxed max-w-lg">Become part of our premium directory network. Reach thousands of potential customers in your area and skyrocket your local visibility today.</p>
                     <Link to="/add-business" className="inline-flex items-center gap-3 bg-primary text-slate-900 font-black px-10 py-5 rounded-2xl hover:scale-110 active:scale-95 transition-all shadow-xl shadow-primary/20 group">
                         Get Started For Free

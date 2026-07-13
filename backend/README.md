@@ -1,6 +1,6 @@
-# 🟡 Yellow Pages — Backend
+# 🟡 BusinessHub — Backend
 
-This is the Node.js + Express backend server for the Yellow Pages business directory application.
+This is the Node.js + Express backend server for the BusinessHub business directory application.
 
 ---
 

@@ -407,7 +407,7 @@ const AddBusiness = () => {
 
                         {/* Testimonial */}
                         <div className="rounded-xl bg-slate-900 p-6 text-white dark:bg-slate-800 shadow-sm border border-slate-800 dark:border-slate-700">
-                            <p className="text-sm italic text-slate-300">"Joining YellowPages helped our bakery grow its customer base by 40% in just three months. Highly recommended!"</p>
+                            <p className="text-sm italic text-slate-300">"Joining BusinessHub helped our bakery grow its customer base by 40% in just three months. Highly recommended!"</p>
                             <p className="mt-4 text-xs font-bold uppercase text-primary">— Sarah J., Flourish Bakery</p>
                         </div>
                     </aside>

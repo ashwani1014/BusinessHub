@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="mx-auto max-w-7xl px-6">
                 <div className="pt-4">
                     <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
-                        <p className="text-xs text-slate-500">© 2026 YellowPages Directory Services. All rights reserved.</p>
+                        <p className="text-xs text-slate-500">© 2026 BusinessHub Directory Services. All rights reserved.</p>
                         <div className="flex gap-6 text-xs text-slate-500">
                             <Link className="hover:text-primary" to="#">Privacy Policy</Link>
                             <Link className="hover:text-primary" to="#">Terms of Service</Link>

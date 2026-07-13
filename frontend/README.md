@@ -1,6 +1,6 @@
-# 🟡 Yellow Pages — Frontend
+# 🟡 BusinessHub — Frontend
 
-This is the React.js frontend for the Yellow Pages business directory application.
+This is the React.js frontend for the BusinessHub business directory application.
 
 ---
 
