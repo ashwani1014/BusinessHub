@@ -1,13 +1,9 @@
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=60" alt="BusinessHub Banner" width="100%" height="300" style="object-fit: cover; border-radius: 10px;" />
-
-  <br />
-  <br />
 
   # 🚀 BusinessHub — Local Business Directory
 
   **Discover, List, and Manage Local Businesses with Ease.**
-  
+
   A modern, responsive, and full-stack web platform built for communities to connect with local services. Featuring role-based access, targeted advertisements, and dynamic directory management.
 
   [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -16,6 +12,11 @@
   [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
   [![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)
   [![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+
+  <br />
+
+  **[🔗 View Live Application](https://business-hub-jade.vercel.app/)**
+
 </div>
 
 ---
@@ -72,7 +73,7 @@ cd backend
 npm install
 npm run dev
 ```
-*Server will start running on **http://localhost:5000***
+✅ Server will start running on **http://localhost:5000**
 
 ### 3. Start the Frontend Application
 In a new terminal window:
@@ -82,7 +83,7 @@ cd frontend
 npm install
 npm run dev
 ```
-*App will start running on **http://localhost:5173***
+✅ App will start running on **http://localhost:5173**
 
 > ⚠️ **Note:** Ensure the backend is running *before* starting the frontend to ensure all API calls proxy correctly.
 
@@ -150,6 +151,45 @@ BusinessHub/
 
 ---
 
+## 🔧 Environment Variables
+
+### Backend (.env)
+```env
+PORT=5000
+JWT_SECRET=your_jwt_secret_key_here
+MONGODB_URI=mongodb://localhost:27017/businesshub
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+### Frontend (.env)
+```env
+VITE_API_URL=http://localhost:5000
+VITE_GOOGLE_CLIENT_ID=your_google_client_id
+```
+
+> **Note**: For local development, the backend uses `mongodb-memory-server` so no MongoDB installation is required!
+
+---
+
+## 🚀 Deployment
+
+### Frontend Deployment (Vercel)
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Configure environment variables in Vercel dashboard
+4. Deploy automatically on push
+
+### Backend Deployment Options
+- **Render.com**: Easy Node.js deployment
+- **Railway**: Full-stack deployment
+- **Heroku**: Traditional cloud platform
+- **AWS/Google Cloud**: Enterprise solutions
+
+**Live Demo**: [https://business-hub-jade.vercel.app/](https://business-hub-jade.vercel.app/)
+
+---
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
@@ -162,6 +202,23 @@ Contributions, issues, and feature requests are welcome!
 
 ---
 
+## 📄 License
+
+This project is licensed under the ISC License.
+
+---
+
+## 📞 Contact & Support
+
+For questions, support, or feature requests, please open an issue on GitHub.
+
+---
+
 <div align="center">
-  <i>Built with ❤️ for local businesses.</i>
+
+  **Made with ❤️ for local businesses**
+
+  [![License](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
 </div>
