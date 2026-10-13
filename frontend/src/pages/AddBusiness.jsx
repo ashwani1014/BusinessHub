@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { fetchApi } from '../utils/api';
 
 // Fields that count towards progress
@@ -29,6 +29,16 @@ const AddBusiness = () => {
             .then(data => setCategories(data))
             .catch(console.error);
     }, []);
+
+    // Redirect to homepage after successful business creation
+    useEffect(() => {
+        if (status.type === 'success') {
+            const timer = setTimeout(() => {
+                navigate('/');
+            }, 3000); // Redirect after 3 seconds
+            return () => clearTimeout(timer);
+        }
+    }, [status.type, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -87,6 +97,7 @@ const AddBusiness = () => {
                 </div>
                 <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-4 italic">Congratulations!</h1>
                 <p className="text-slate-500 text-lg mb-10 max-w-md mx-auto font-medium">Your business "{formData.name}" is now live and ready to attract customers.</p>
+                <p className="text-primary text-sm font-bold mb-10">Redirecting to homepage in 3 seconds...</p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link to={`/business/${status.data?._id}`} className="w-full sm:w-auto bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-10 py-4 rounded-2xl font-black shadow-2xl hover:scale-105 active:scale-95 transition-all">
